@@ -8,7 +8,7 @@ Ce document regroupe les notes, commentaires et règles visibles dans le diagram
 
 - [ ] Doit être capable de gérer les deux usines (STH & SRY).
   - Est-ce que la soumission de vente est liée à une usine?
-  - Est-ce que les deux usines fabriquent tous les produits?
+  - Est-ce que les deux usines fabriquent tout les produits?
 
 - [ ] Les avertissements sur les limitations de qualité minimales semblent se contredire entre elles.
   - Est-ce que la limitation selon la quantité minimale est informative ou stricte?
@@ -22,21 +22,23 @@ Ce document regroupe les notes, commentaires et règles visibles dans le diagram
 ## Notes sur la logique de configuration produit
 
 - [ ] Si Norex-H, ajouter les caractéristiques antidérapantes.
-  - trouver sur diagramme???
+  - Expliquer?
 
 - [ ] BUTYLE: coché automatique.
-  - Est-ce qu'on inclus toujours du butyle?
+  - Est-ce qu'on inclus toujours du butyle ou si c'est pcq par défaut c'est inclus?
 
 ## Notes sur la sélection d'acier, fini, texture, couleur
 
 - [ ] Processus de gestion de la gamme de couleurs offertes impliquant Marketing et Appro.
-  - Expliquer
+  - Expliquer?
 
 - [ ] En fonction du type de produit & joint & largeur, différents aciers disponibles.
   - Est-ce que c'est un facteur de la largeur requise pour produire le panneau (largeur + type de joint)?
+  - Autrement dit: est-ce que c'est la largeur de l'acier qui limite la largeur du produit?
 
 - [ ] Processus à mettre en place pour s'assurer d'avoir un lisse & un embossé de chaque aciers.
   - Expliquer lisse et embossé, est-ce une caractéristique du sku d'acier?
+  - Clarifier le processus?
 
 - [ ] En fonction du type de produit & joint, différents profils de panneaux disponibles.
   - Expliquer?
@@ -58,6 +60,8 @@ Ce document regroupe les notes, commentaires et règles visibles dans le diagram
 - [ ] PROFILE: limiter les profiles selon le type de panneau.
   - NOROC: annuler Cannelé.
   - NOREX-S: annuler Silkline-Plus et Micro-nervuré.
+  - NOREX-H: cannelure automatique
+    - Est-ce que dans ce cas la cannelure est obligatoire?
 - TOUS TYPES: si le fini extérieur est en 26ga, annuler le Micro-nervuré.
 - Clarifier les points ci-haut?
 
@@ -75,7 +79,9 @@ Les éléments ci-dessous sont visibles dans l'image, mais certains mots restent
 
 - Une note semble demander d'identifier si certains choix doivent être tarifés au coût ou comme option, possiblement pour les PI2 intérieurs ou extérieurs.
 - Une petite note jaune près de la zone de prix est présente, mais sa phrase complète n'est pas suffisamment lisible pour être retranscrite sans risque.
-- Une note à droite de l'étape de sélection de couleur semble indiquer que quatre items sont disponibles et que l'utilisateur peut imposer une combinaison de couleurs, ou ne mettre aucune restriction. Cette formulation doit être confirmée à partir de la source originale.
+
+- [ ] Les filtres de sélection de l'acier (gauge, type peinture, texture, couleur) sont optionnels et peuvent être utilisés dans le désordre.
+  - Est-ce qu'une pré-sélection est faite en fonction de la compatibilité avec le produit sélectionné (basé sur la largeur de tôle)?
 
 ## Lecture structurée du diagramme
 
