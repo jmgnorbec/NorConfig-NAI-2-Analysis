@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "confluence-sync": "github:Norbec/confluence-sync"
+  },
+  "scripts": {
+    "sync": "confluence-sync",
+    "sync:dry": "confluence-sync --dry-run --verbose"
+  }
+}
