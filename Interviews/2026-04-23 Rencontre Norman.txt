@@ -1,0 +1,54 @@
+Réunion de clarification avec Norman 2026-04-23
+
+On parle de projets de type 'Lot de panneaux'
+  - Appellation du type de projet
+    - cas 1: Soumission budgétaire (ne deviendra pas une commande)
+	  - Est-ce que c'est fait toujours dans NAI Pricing?
+	- cas 2: Soumission liste de coupe
+  - Ce type de projet peut utiliser la notion d'Axe
+
+Axe -> surtout utile pour emballage
+  - Clarifier la signification architecturale d'un Axe
+
+Critique de la maquette proposée:
+  - La maquette n'est pas assez développée pour leur compréhension, besoin de plus de réalisme
+  - Un menu déroulant n'est pas efficace, click direct serait préférable (préciser les cas)
+  - Pourquoi acier contient couleur
+    - Déterminer processus définition de l'acier (type acier, épaisseur, couleur, autres propriétés)
+  - Norman pense que ce qui est proposé ne va pas l'aider et qu'au contraire ça va le ralentir
+
+Équipe des estimateurs
+  - Annie est chef d'équipe
+
+Équipe (chargés de projet - début avec le PO)
+  - Chef Étienne
+  - Amélie est lead (adjointe au chef d'équipe)
+  - Les estimateurs sont:
+    - Vicky
+    - Jasmin
+    - Norman
+
+Comité non-conformités
+  - Chantal Gauthier est responsable
+  - Ludovik côté Jira
+  - Participants
+	- Nancy Dagenais
+	- Annie
+	- Norman
+
+Le plus gros quick-win pour réduire les non-conformités dans les projets 'Lot de panneaux'
+  - Ludovik Gabani et Damien Vuch ont fait un formulaire 'Order Form' (projet Jira)
+    - Marc-Antoine peut me faire une démo
+  - Le formulaire est destiné à être rempli par le client
+  - J-P Ménard a développé un outil de calcul de soumission pour un projet de toit
+
+
+Type de projet le nom "projet panneau"
+- Dans tous les cas la spec de panneau est défini
+- Pi2 de panneau (80%)
+- Nombre de panneau (10%)
+- Liste de coupe (7%)
+- Bâtiment (3%)
+
+Clarifier la notion de groupe dans un projet architectural
+Takeoff - de bâtiment à panneau

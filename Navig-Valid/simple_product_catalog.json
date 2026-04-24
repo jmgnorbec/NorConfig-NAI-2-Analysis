@@ -1,0 +1,73 @@
+{
+  "panelCatalog": {
+    "generalInfo": {
+      "id": "nai-panel-catalog-v1",
+      "name": "Catalogue simplifie des panneaux NAI",
+      "source": "Configurateur NAI 2.0 - Requis.png",
+      "modelingNote": "La hierarchie produit est aplatie au niveau du produit commercial configurable."
+    },
+    "products": [
+      {
+        "family": "norex",
+        "id": "norex-s",
+        "label": "Norex S",
+        "widths": [
+          {
+            "width": 44.0,
+            "thicknesses": [4]
+          }
+        ]
+      },
+      {
+        "family": "norex",
+        "id": "norex-l",
+        "label": "Norex L",
+        "widths": [
+          {
+            "width": 42.5,
+            "thicknesses": [2, 3, 4, 5, 6, 8]
+          },
+          {
+            "width": 36.0,
+            "thicknesses": [3, 4]
+          }
+        ]
+      },
+      {
+        "family": "norex",
+        "id": "norex-h",
+        "label": "Norex H",
+        "characteristics": ["anti-slip"],
+        "widths": [
+          {
+            "width": 41.5,
+            "thicknesses": [3, 4]
+          },
+          {
+            "width": 36.0,
+            "thicknesses": [3, 4]
+          },
+          {
+            "width": 30.0,
+            "thicknesses": [3, 4]
+          },
+          {
+            "width": 24.0,
+            "thicknesses": [3, 4]
+          }
+        ]
+      },
+      {
+        "family": "noroc",
+        "id": "noroc",
+        "label": "Noroc",
+        "widths": [
+          {
+            "width": 42.5,
+            "thicknesses": [5, 6, 8]
+          }
+        ]
+      }
+    ]
+  }
+}
