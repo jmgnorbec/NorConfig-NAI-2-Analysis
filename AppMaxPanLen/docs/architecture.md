@@ -4,157 +4,155 @@
 
 Microservices architecture with containerized backend API and frontend UI.
 
+## MVP Principles
+
+- **Static data**: CSV files represent material physics, rarely change
+- **Full dataset to frontend**: Backend serves complete plant data; frontend handles all filtering and calculation
+- **Client-side intelligence**: Frontend filters valid options based on actual data combinations for optimal UX
+- **No BFF layer**: Frontend handles UI logic and state management directly; simplicity of MVP doesn't justify additional backend-for-frontend layer
+- **Simple backend**: Serves data, no business logic or validation
+- **Simple updates**: Replace CSV files and redeploy containers (no hot reload needed)
+- **Internal tool**: No internationalization needed (display bilingual labels as-is)
+- **Deployment**: Docker Compose for both dev and production (VM in VPN)
+
+**Rationale for full dataset approach:**
+- Dataset is small (~50-100 rows per plant, <50KB)
+- Single API call provides all data needed for entire session
+- Enables smart UI filtering (show only valid combinations)
+- Frontend can calculate results instantly without API calls
+- Simpler backend implementation (pure data serving)
+
 ## Backend - REST API
 
 **Technology Stack:**
-- Python 3.11+
-- FastAPI
-- Uvicorn (ASGI server)
-- Pydantic (data validation)
-- pandas (CSV processing)
+- **Python 3.11+** - Modern, type-safe Python
+- **FastAPI** - High-performance, auto-generated API docs
+- **Uvicorn** - Fast ASGI server
+- **Pydantic** - Runtime data validation
+- **pandas** - Efficient CSV parsing and data manipulation
 
-**API Endpoints:**
+**Responsibilities:**
+- Parse and load CSV data at startup
+- Serve complete plant datasets to frontend
+- Minimal processing (read CSV, convert to JSON)
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/plants` | List available plants |
-| GET | `/api/plants/{plantId}/filters` | Get all available filter options for plant |
-| POST | `/api/calculate` | Calculate maximum panel length |
-| GET | `/docs` | Swagger UI documentation |
-| GET | `/redoc` | ReDoc documentation |
+**API Design:** See [api-specification.md](api-specification.md) for complete endpoint details
 
-**Request Model (POST /api/calculate):**
-```json
-{
-  "plant": "STH",
-  "color": "Blanc Régal/Regal White",
-  "paint": "PVDF CLASSIC",
-  "gage": 22,
-  "profile": "Grooved",
-  "finish": "Embossed"
-}
-```
-
-**Response Model:**
-```json
-{
-  "maxLength": "52.25",
-  "unit": "ft",
-  "available": true,
-  "plant": "STH",
-  "metadata": {
-    "color": "Blanc Régal/Regal White",
-    "paint": "PVDF CLASSIC",
-    "gage": 22,
-    "profile": "Grooved",
-    "finish": "Embossed"
-  }
-}
-```
-
-**Data Loading:**
-- CSV files loaded at startup into memory
-- Indexed data structures for fast lookups
-- Validation of input parameters against available options
-
-**Port:** 8000
-
+**Key Endpoints:**
+- `GET /api/plants` - List available plants
+- `GET /api/plants/{plantId}/options` - Get filter options for plant
+- `POST /api/calculate` - Valdata` - Get complete dataset for plant
 ## Frontend - React UI
 
 **Technology Stack:**
-- React 18+
-- Vite (build tool)
-- Tailwind CSS (styling - ToitCalc Pro style)
-- Axios (HTTP client)
-- i18next (bilingual EN/FR support)
+- **React 18+** - Component-based UI
+- **Vite** - Fast build tool with hot reload
+- **Tailwind CSS** - Utility-first styling
+- **Axios** - HTTP client for API calls
 
-**Components:**
-- `PlantSelector` - Toggle/select between STH and SRY
-- `FilterPanel` - Cascading dropdowns for Color, Paint, Gage, Profile, Finish
-- `ResultDisplay` - Large, prominent max length display
-- `ErrorBoundary` - Handle NA/unavailable combinations
+**Responsibilities:**
+- Manage UI state (selections, filter options)
+- Load and cache complete plant dataset
+- Extract filter options from dataset
+- Implement smart filtering logic (show only valid combinations)
+- Calculate results locally from dataset
+- Manage three-state controls and smart state preservation
+**UI Design:** See [ui-specifications.md](ui-specifications.md) for complete design and interaction details
 
-**Features:**
-- Cascading filter logic (only show valid combinations)
-- Real-time validation
-- Bilingual labels and messages
-- Responsive design
-
-**Port:** 3000 (dev), 80 (production via Nginx)
+**Key Features:**
+- ToitCalc-inspired "toy but pro" aesthetic
+- One-click controls (no dropdowns for characteristics)
+- Cascading filter behavior with smart state preservation
+- Real-time result display via API
 
 ## Docker Architecture
 
-### Backend Container
-```dockerfile
-FROM python:3.11-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
-EXPOSE 8000
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-```
+**Strategy:** Multi-container deployment with Docker Compose on single host
 
-### Frontend Container
-```dockerfile
-# Build stage
-FROM node:18-alpine AS build
-WORKDIR /app
-COPY package*.json .
-RUN npm install
-COPY . .
-RUN npm run build
+**Backend Container:**
+- Python 3.11 slim base image
+- CSV files mounted as volumes for easy updates
+- Exposes port 8000
 
-# Production stage
-FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
-```
+**Frontend Container:**
+- Multi-stage build: Node for build, Nginx for serving
+- Nginx proxies `/api/*` to backend in production
+- Exposes port 3000 (dev) or 80 (production)
 
-### Docker Compose
-```yaml
-version: '3.8'
-services:
-  backend:
-    build: ./src/backend
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./MaxLength-STH.csv:/app/data/MaxLength-STH.csv
-      - ./MaxLength-SRY.csv:/app/data/MaxLength-SRY.csv
-    environment:
-      - CORS_ORIGINS=http://localhost:3000
-  
-  frontend:
-    build: ./src/frontend
-    ports:
-      - "3000:80"
-    build: ./src/frontend
-    ports:
-      - "3000:80"
-    depends_on:
-      - backend
-    environment:
-      - REACT_APP_API_URL=http://localhost:8000
-```
+**Container Networking:**
+- Both containers run on same Docker instance
+- Private Docker network for inter-container communication
+- Frontend → Backend via internal network (e.g., `http://backend:8000`)
+- Only frontend port exposed to host
+- **Rationale:** Secure internal communication, backend not directly accessible from outside
+
+**Volume Mounts:**
+- `./MaxLength-STH.csv` → `/app/data/MaxLength-STH.csv`
+- `./MaxLength-SRY.csv` → `/app/data/MaxLength-SRY.csv`
+
+**Rationale:** CSV files as volumes allow data updates without rebuilding containers
 
 ## Data Flow
 
-1. User selects plant → Frontend fetches available filters from `/api/plants/{plantId}/filters`
-2. User selects parameters → Dropdowns cascade based on valid combinations
-3. User submits → Frontend POSTs to `/api/calculate`
-4. Backend looks up value in CSV data → Returns max length or NA
-5. Frontend displays result prominently
+**1. Startup:**
+- Backend loads CSV files, extracts filter options
 
-## Development vs Production
+**2. User Interaction:**
+- Frontend fetches plant list and options from backend
+- User selects plancomplete dataset for selected plant
+- Caches data for session duration
+- Filters available colors from dataset
+- User selects color → frontend filters characteristics based on actual data rows
+- User completes selection → frontend calculates result from local dataset
+
+**3. Result Display:**
+- Frontend looks up max length from cached dataset
+- Displays numeric value or "NA" accordingly
+- No backend validation needed (all combinations come from actual data)
+
+**Key Decision:** Full dataset to frontend enables intelligent filtering and instant results; data size is small enough for efficient transfer and client-side processing
+## Deployment Environments
 
 **Development:**
-- Hot reload for both frontend and backend
-- Backend on :8000, Frontend on :3000
-- CORS enabled for localhost
+- Both services run with hot reload
+- Frontend on :3000, Backend on :8000 (both exposed to host)
+- Frontend calls backend via localhost:8000
+- CORS enabled for cross-origin requests
 
 **Production:**
-- Nginx serves frontend on :80
-- Nginx proxies `/api/*` to backend :8000
-- Single domain, no CORS needed
+- Nginx serves frontend on :80 (exposed to host)
+- Backend on :8000 (internal only, not exposed)
+- Nginx proxies `/api/*` to `http://backend:8000` via Docker network
+- Single domain eliminates CORS needs
+- CSV data updates: replace files and restart containers
+
+## Testing Strategy
+
+### Backend Tests
+**Unit Tests (pytest):**
+- CSV parsing and data loading
+- Filter options extraction logic
+- Data structure validation
+- Edge cases (missing values, malformed data)
+
+**API Tests:**
+- Endpoint response schemas (Pydantic validation)
+- Plant list returns correctly
+- Plant data endpoint returns valid structure
+- Handle invalid plant IDs
+
+**Coverage target:** Core logic and API endpoints
+
+### End-to-End Tests
+**Playwright/Cypress:**
+- Complete user flow: select plant → select all parameters → verify result displayed
+- Test NA result display
+- Test all plants (STH, SRY)
+- Verify cascading filter behavior
+- Responsive layout validation
+
+**Coverage:** Critical user paths only (MVP scope)
+
+### Manual Testing
+- Cross-browser compatibility (Chrome, Edge, Firefox)
+- Sample data verification against original sources
