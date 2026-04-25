@@ -133,3 +133,7 @@ Questions à clarifier:
 Questions à clarifier:
 - [ ] Est-ce que la limitation selon la quantité minimale est informative ou stricte?
 - [ ] Clarifier l'objectif du bouton 'Panneau INT' ou 'Panneau EXT'
+
+## 9. Références
+
+- 
