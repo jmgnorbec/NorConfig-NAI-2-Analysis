@@ -15,6 +15,7 @@ module.exports = {
   
   // Map markdown filename to Confluence page title
   pageMapping: {
+    'proprietes-valeurs-conditions.md': 'Propriétés, Valeurs et Conditions',
     'diagram_notes_review.md': 'Clarifications Produit-Acier'
   },
   

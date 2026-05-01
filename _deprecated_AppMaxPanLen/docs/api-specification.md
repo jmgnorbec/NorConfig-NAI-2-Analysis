@@ -99,7 +99,51 @@
 
 ---
 
-### 3. API Documentation
+### 3. Calculate Maximum Length
+
+**Endpoint:** `POST /api/calculate`
+
+**Description:** Calculate maximum panel length for given parameters
+
+**Request Body:**
+```json
+{
+  "plant": "STH",
+  "color": "Blanc Régal/Regal White",
+  "paint": "PVDF CLASSIC",
+  "gage": 22,
+  "profile": "Grooved",
+  "finish": "Embossed"
+}
+```
+
+**Response (200 OK):**
+```json
+{
+  "maxLength": "52.25",
+  "unit": "ft"
+}
+```
+
+**Response (200 OK - Not Available):**
+```json
+{
+  "maxLength": "NA",
+  "unit": null
+}
+```
+
+**Response (400 Bad Request):**
+```json
+{
+  "error": "Invalid parameters",
+  "detail": "Missing required field: color"
+}
+```
+
+---
+
+### 4. API Documentation
 
 **Swagger UI:** `GET /docs`  
 **ReDoc:** `GET /redoc`
@@ -128,6 +172,26 @@
 {
   "plant": str,
   "data": List[DataRow]
+}
+```
+
+### CalculateRequest
+```python
+{
+  "plant": str,
+  "color": str,
+  "paint": str,
+  "gage": int,
+  "profile": str,
+  "finish": str
+}
+```
+
+### CalculateResponse
+```python
+{
+  "maxLength": str,  # Numeric value or "NA"
+  "unit": str | null  # "ft" or null if NA
 }
 ```
 

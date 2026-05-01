@@ -34,14 +34,14 @@ Microservices architecture with containerized backend API and frontend UI.
 **Responsibilities:**
 - Parse and load CSV data at startup
 - Serve complete plant datasets to frontend
-- Minimal processing (read CSV, convert to JSON)
+- Calculate maximum panel length based on parameters
 
 **API Design:** See [api-specification.md](api-specification.md) for complete endpoint details
 
 **Key Endpoints:**
 - `GET /api/plants` - List available plants
-- `GET /api/plants/{plantId}/options` - Get filter options for plant
-- `POST /api/calculate` - Valdata` - Get complete dataset for plant
+- `GET /api/plants/{plantId}/data` - Get complete dataset for plant
+- `POST /api/calculate` - Calculate maximum panel length
 ## Frontend - React UI
 
 **Technology Stack:**
@@ -55,7 +55,7 @@ Microservices architecture with containerized backend API and frontend UI.
 - Load and cache complete plant dataset
 - Extract filter options from dataset
 - Implement smart filtering logic (show only valid combinations)
-- Calculate results locally from dataset
+- Request calculation from backend API
 - Manage three-state controls and smart state preservation
 **UI Design:** See [ui-specifications.md](ui-specifications.md) for complete design and interaction details
 
@@ -98,19 +98,19 @@ Microservices architecture with containerized backend API and frontend UI.
 - Backend loads CSV files, extracts filter options
 
 **2. User Interaction:**
-- Frontend fetches plant list and options from backend
-- User selects plancomplete dataset for selected plant
+- Frontend fetches plant list from backend
+- User selects plant → frontend fetches complete dataset for selected plant
 - Caches data for session duration
 - Filters available colors from dataset
 - User selects color → frontend filters characteristics based on actual data rows
-- User completes selection → frontend calculates result from local dataset
+- User completes selection → frontend sends parameters to backend for calculation
 
 **3. Result Display:**
-- Frontend looks up max length from cached dataset
-- Displays numeric value or "NA" accordingly
-- No backend validation needed (all combinations come from actual data)
+- Backend calculates max length from parameters
+- Frontend displays numeric value or "NA" accordingly
+- Smart filtering ensures only valid combinations are selectable
 
-**Key Decision:** Full dataset to frontend enables intelligent filtering and instant results; data size is small enough for efficient transfer and client-side processing
+**Key Decision:** Full dataset to frontend enables intelligent filtering; backend handles calculation to centralize business logic while maintaining responsive UX
 ## Deployment Environments
 
 **Development:**

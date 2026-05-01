@@ -1,5 +1,13 @@
 # Development Principles & Preferences
 
+## Model Selection
+
+**Sonnet 4.5:** Planning, architecture, specs, documentation, explanation, refactoring strategy
+
+**Codex (GPT-5):** Code implementation, cross-file edits, test fixes, mechanical changes, execution after plan exists
+
+---
+
 ## Documentation Philosophy
 
 ### Core Principles
@@ -101,7 +109,6 @@
 ### Decision-Making
 
 **Optimize for the actual problem**
-- Small datasets (<50KB) favor client-side processing
 - Internal tools don't need enterprise-grade security on day 1
 - Simple architectures are easier to implement and maintain
 - Question conventional patterns when they don't fit the scale

@@ -10,12 +10,12 @@
 - Implement endpoints:
   - `GET /api/plants` - plant list
   - `GET /api/plants/{plantId}/data` - complete dataset
-- Basic error handling (404 for invalid plant)
-- Simple tests (pytest) for CSV loading and endpoint responses
+  - `POST /api/calculate` - calculate maximum length
+- Calculation logic: map profile+finish to column key, lookup value
+- Basic error handling (404 for invalid plant, 400 for invalid parameters)
+- Simple tests (pytest) for CSV loading, calculation logic, and endpoint responses
 
-**Deliverable:** API serving complete plant datasets via Swagger UI
-
-**Note:** Simpler than originally planned - no validation logic, no calculate endpoint
+**Deliverable:** API serving plant datasets and calculating max lengths via Swagger UI
 
 ---
 
@@ -34,16 +34,17 @@
 ---
 
 ## Phase 3: Business Logic (1-2 days)
-**Goal:** Smart filtering and calculation logic
+**Goal:** Smart filtering and API integration
 
 **Key Tasks:**
 - Implement data loading and caching per [ui-specifications.md](ui-specifications.md)
 - Dynamic filtering: extract and filter options based on current selections
-- Result calculation from cached dataset (profile + finish mapping)
+- API integration for calculation endpoint
 - State management rules (plant change, color change, characteristic change)
 - Handle NA values in display
+- Loading states during calculation
 
-**Deliverable:** Fully functional filtering with intelligent option display and instant results
+**Deliverable:** Fully functional filtering with intelligent option display and API-driven results
 
 ---
 
@@ -98,9 +99,9 @@
 
 - ✅ All parameter selections work correctly
 - ✅ Only valid combinations shown (smart filtering)
-- ✅ Accurate max length results (including NA)
+- ✅ Accurate max length results from API (including NA)
 - ✅ Smart state preservation on plant/color changes
-- ✅ Instant results (no API call for calculation)
+- ✅ Responsive results with appropriate loading states
 - ✅ Clean UI matching design specifications
-- ✅ Backend and E2E tests passing
+- ✅ Backend calculation logic and E2E tests passing
 - ✅ Docker deployment successful

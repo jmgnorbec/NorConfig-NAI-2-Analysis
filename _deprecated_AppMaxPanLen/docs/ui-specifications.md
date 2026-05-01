@@ -378,32 +378,15 @@ Consider: Should this prevent selection entirely, or allow user to proceed and s
 
 ## Result Calculation
 
-### Profile + Finish to CSV Column Mapping
-
-**Mapping table for constructing column keys:**
-
-| Profile | Finish | CSV Column Key |
-|---------|--------|----------------|
-| Grooved | Embossed | GroovedEmbossed |
-| Grooved | Smooth | GroovedSmooth |
-| Silkline | Embossed | SilklineEmbossed |
-| Silkline | Smooth | SilklineSmooth |
-| Microribbed | Embossed | MicroribbedEmbossed |
-| Microribbed | Smooth | MicroribbedSmooth |
-| None | Embossed | Embossed |
-| None | Smooth | Smooth |
-
 ### Calculation Logic
 
 **When all parameters selected:**
 
-1. **Construct column key** by concatenating Profile + Finish values (see mapping table above)
+1. **Send calculation request to API** with all selected parameters (plant, color, paint, gage, profile, finish)
 
-2. **Find matching row** in cached dataset using selected color, paint, and gage
+2. **Receive max length result** from backend (numeric value or "NA")
 
-3. **Extract max length value** from row's maxLengths object using constructed column key
-
-4. **Display result** (see Result Display section below)
+3. **Display result** with appropriate formatting and styling
 
 ### Result Display
 
