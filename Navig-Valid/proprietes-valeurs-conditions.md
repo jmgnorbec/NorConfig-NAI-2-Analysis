@@ -8,8 +8,7 @@
         - 3
         - 4
         - 5
-  - Pas de profil Silkline-Plus et Micro-Nervuré
-  - Pas de cannelure
+  - Pas de cannelure (reveal)
   - Panneau intérieur
 
 - **Norex-IN**
@@ -19,25 +18,16 @@
         - 3
         - 4
         - 5
-  - Pas de profil Silkline-Plus et Micro-Nervuré
-  - Pas de cannelure
+  - Pas de cannelure (reveal)
   - Panneau intérieur
   - Fabriqué seulement à SRY
+  - *** Jose est en mission pour clarifier l'offre (Laurence, Frédéric Ausseur, Simon, Annie)
 
 - **Norex-L**
   - Largeur - Epaisseur
-    - 24 (confirmer)
-        - 3
-        - 4
-    - 30 (confirmer)
-        - 3
-        - 4
     - 36
-        - 2
         - 3
         - 4
-        - 5
-        - 6
     - 42,5
         - 2
         - 3
@@ -45,8 +35,9 @@
         - 5
         - 6
         - 8
-  - Pas de cannelure
+  - Pas de cannelure (reveal)
   - Panneau extérieur
+  - Épaisseurs 2" et 8" requiert un minimum de 8000pc
 
 - **Norex-H**
   - Largeur - Epaisseur
@@ -57,16 +48,20 @@
         - 3
         - 4
     - 36
-        - 2
         - 3
         - 4
-    - 41,5 (confirmer)
-        - 2
+    - 41,5
         - 3
         - 4
   - Cannelure
     - 3/4 obligatoire
   - Panneau extérieur
+  - Largeurs 24" et 30" requiert un minimum de 5000pc
+  - Opérations manuelles de coin plié/tourné - Source est un dessin à main levée
+    - *** Norman va envoyer qq exemples à Jean-Marc
+      - Image
+      - Guide de référence
+      - Résultat du traitement de l'image
 
 - **Norex-M**
   - Largeur - Epaisseur
@@ -93,46 +88,79 @@
     - 3/4 optionnel
   - Panneau extérieur
   - Fabriqué seulement à SRY
+  - *** Même besoin d'opérations manuelles que pour un H
+
+
+## Toits
+- NorPex
+  - *** Parler avec Norman (toiture tennis bord de l'eau)
+  - Serait intéressant de vendre panneau NorPex
 
 - NorSeam
   - ??
     - 5
+*** Contacter Jean-Philippe Ménard afin d'obtenir les informations sur l'offre de produit
 
-## Fini
+## Fini (embossé)
 - Lisse
 - Stucco
 - Séville
-- Norbec
-- Restrictions?
+- Norbec (SRY)
+
+- Restrictions
+  - Pas d'embossé pour toits face extérieur
 
 ## Gauge
 - 22
 - 24
+  - Pas au Québec sauf exception, seulement en Ontario
+    - *** Parler avec Claude Auger afin de clarifier l'offre de produit nominale ... et les cas particuliers
 - 26
   - Non applicable face extérieure de toit
-  - Profil 'aucun' non applicable
+  - Profil requis (l'option 'aucun' profil n'est pas applicable)
+
+??? Minimum requis - Parler avec ???
+??? Fichier Excel de Claude Vincent
+
+*** Discussion façon de déterminer les aciers disponibles en fonction des sku/définitions-BD
 
 ## Profil
 - **Aucun profil**
   - Non applicable sur panneau de toit
   - Gage 22 et 24
-      
+
 - **Ondulé** (nouvelle appelation pour cannelé)
   - Non applicable sur face extérieure de panneau de toit
   - Est-ce que applicable sur mur extérieur ???
 
 - **Ondulé-Plus**
   - Extérieur seulement
+  - Seul choix possible pour extérieur de toit
 
 - **Silkline**
-  - Intérieur seulement ou Extérieur aussi ???
+  - Intérieur et extérieur
 
 - **Silkline-Plus**
   - Extérieur seulement
-      
+
 - **Micro-Nervuré**
   - Extérieur seulement
-  - Non applicable sur gauge 26
+  - Sauf panneau de toit
+
+- Fait sur la ligne
+
+## Butyle
+- Toujours pour les panneaux extérieurs
+  - Appliqué en usine ou à l'installation
+- Sur demande seulement pour les panneaux intérieurs
+  - Appliqué en usine
+
+*** Notion de certification
+  - NSF - un gasket - tout les produits ??? Parler avec Sébastien Désy
+    - Le gasket permet conformité au standard NSF
+    - Est-ce que tout les produits sont compatibles NSF
+    - Est-ce que toutes les couleurs sont compatibles NSF
+  - FM
 
 #
 #
@@ -154,7 +182,7 @@
   - Norex-IN
 
 - **Laine de roche**
-  - Norex-L
+  - Noroc
 
 ## Revêtement
 - Galvanisé
@@ -167,7 +195,3 @@
 ## Peinture
 - PVDF
 - SMP
-
-## Butyle
-- Toujours pour les panneaux extérieurs
-- Sur demande seulement pour les panneaux intérieurs
