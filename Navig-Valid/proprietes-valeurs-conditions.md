@@ -21,7 +21,17 @@
   - Pas de cannelure (reveal)
   - Panneau intérieur
   - Fabriqué seulement à SRY
-  - *** Jose est en mission pour clarifier l'offre (Laurence, Frédéric Ausseur, Simon, Annie)
+  - On a reçu un document Excel qui décrit l'offre en détails
+    - *** JMG doit l'analyser et en ressortir les données/besoins
+      - Est-ce qu'on doit moduler le choix des aciers en fonction des contraintes de l'usine SRY (pcq Norex-IN est nécessairement SRY)
+        - Inclus épaisseur d'acier
+        - Ok pour limiter étant donné la possibilité de dérogation
+        - Plus poussé - considérer les niveaux d'inventaire
+        - N'EST PAS UN BESOIN PRIORITAIRE POUR UNE APPROCHE FORMELLE
+  - Visibilité sur l'inventaire d'acier (priorités, inventaire, consommation, approvisionnement)
+    - Oui sur visibilité synthétique au moment de soumissionner
+      - Sensibilisation sur le fait qu'il ne faut pas se baser seulement sur cette information
+    - Christian Seyer est guichet unique - NON ISSUE
 
 - **Norex-L**
   - Largeur - Epaisseur
@@ -58,10 +68,13 @@
   - Panneau extérieur
   - Largeurs 24" et 30" requiert un minimum de 5000pc
   - Opérations manuelles de coin plié/tourné - Source est un dessin à main levée
-    - *** Norman va envoyer qq exemples à Jean-Marc
+    - Amélie a envoyé qq exemples à Jean-Marc
       - Image
       - Guide de référence
       - Résultat du traitement de l'image
+    - *** Dans les exemples on a pas de dessin à main levée, est-ce tjrs pertinent?
+    - *** Analyse des différents cas de la façon que le client nous fournit l'information
+      - On semble avoir un formulaire type, est-ce que c'est utilisé?
 
 - **Norex-M**
   - Largeur - Epaisseur
@@ -88,7 +101,8 @@
     - 3/4 optionnel
   - Panneau extérieur
   - Fabriqué seulement à SRY
-  - *** Même besoin d'opérations manuelles que pour un H
+  - ??? Même questionnement que pour un Norex-IN concernant la sélection d'acier
+  - *** Même besoin d'opérations manuelles que pour un Norex-H
 
 
 ## Toits
@@ -120,7 +134,9 @@
   - Profil requis (l'option 'aucun' profil n'est pas applicable)
 
 ??? Minimum requis - Parler avec ???
-??? Fichier Excel de Claude Vincent
+??? Fichier Excel de Claude Vincent - Annie Lambert
+  - Séparer frais setup du prix au pica
+    - Projet des estimateurs
 
 *** Discussion façon de déterminer les aciers disponibles en fonction des sku/définitions-BD
 
@@ -130,8 +146,8 @@
   - Gage 22 et 24
 
 - **Ondulé** (nouvelle appelation pour cannelé)
-  - Non applicable sur face extérieure de panneau de toit
-  - Est-ce que applicable sur mur extérieur ???
+  - Non applicable sur face extérieure de panneau de toit 
+  - Intérieur et Extérieur
 
 - **Ondulé-Plus**
   - Extérieur seulement
@@ -195,3 +211,8 @@
 ## Peinture
 - PVDF
 - SMP
+
+## Lexique
+- Le résultat des paramètres d'acier? Acier fini
+- Plafond = Toit de chambre
+- Toiture = Toit de bâtiment
